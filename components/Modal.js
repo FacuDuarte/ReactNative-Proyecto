@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { 
-    Text, 
-    View, 
-    Button, 
+import {
+    Button,
     Modal,
-    StyleSheet
-  } from 'react-native';
+    StyleSheet,
+    Text,
+    View
+} from 'react-native';
+import React, { useState } from 'react';
 
 function ModalItem(props) {
     const { visible, onDelete, item, onCancel} = props;

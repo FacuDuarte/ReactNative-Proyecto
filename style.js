@@ -29,9 +29,10 @@ export default styles = StyleSheet.create({
       flex: 4,
       alignItems: 'center',
       borderRadius: 20,
-      margin: 10
+      margin: 10,    
     },
     listItem: {
-      fontSize: 20
+      fontSize: 20,
+      fontFamily:"GrapeNuts",
     },
 });

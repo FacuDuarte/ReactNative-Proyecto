@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
-import { 
-  Text, 
-  View, 
-  FlatList, 
-} from 'react-native';
-import ModalItem  from './components/Modal';
-import AddItem from './components/AddItem';
 import './style';
+
+import {
+  FlatList,
+  Text,
+  View,
+} from 'react-native';
+import React, { useState } from 'react';
+
+import AddItem from './components/AddItem';
+import AppLoading from 'expo-app-loading';
+import ModalItem  from './components/Modal';
+import StartInput from './components/StartInput';
+import { useFonts } from 'expo-font';
 
 export default function App() {  
   const [ counter, setCounter ] = useState(3);
   const [ listItem, setListItem ] = useState([{id:1, value:'Juan'},{id:2, value:'Pedro'}]);
   const [ itemSelected, setItemSelected ] = useState({});
   const [ modalVisible, setModalVisible ] = useState(false);
+  const [start, setStart] = useState ()
+
+  const [loaded] = useFonts({
+    GrapeNuts: require("./assets/fonts/GrapeNuts-Regular.ttf")
+  })
+
+  if(!loaded) return <AppLoading/>
 
   
   const onHandlerDelete = id => { 
@@ -47,9 +59,21 @@ export default function App() {
           * {data.item.value} ({data.item.id})
       </Text>
 
+  const changeView = data => {
+    setStart(data)
+  }    
+
+  let inputText = <StartInput onStart={changeView}/>
+
+  if(start) {
+    inputText = <AddItem onAddItem={agregarItem}/>
+    }
+    // // //   inputText =  <StartInput/>
+    // <StartInput/>
+
   return (
     <View style={styles.container}>
-      <AddItem onAddItem={agregarItem}/>      
+      {inputText}      
       <View style={styles.listItemContainer}>
         <FlatList
           data={listItem}

@@ -1,10 +1,10 @@
-import React, {useState } from 'react';
-import { 
-    View, 
-    TextInput, 
-    Button, 
-    StyleSheet
-  } from 'react-native';
+import {
+    Button,
+    StyleSheet,
+    TextInput,
+    View
+} from 'react-native';
+import React, {useState} from 'react';
 
 function AddItem(props) {      
     const [ textItem, setTextItem ] = useState('');  
